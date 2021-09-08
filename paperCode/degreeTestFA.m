@@ -14,7 +14,8 @@ A = Problem.A;
 d = size(A,2);
 sa = S.s; 
 
-lmb = 1e-10; 
+%lmb = 1e-10; % For arXiV paper
+lmb = 0; % for LAA
 lambda = lmb*max(sa); 
 
 sb = sqrt(sa.^2 + lambda); 

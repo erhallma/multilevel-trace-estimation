@@ -7,7 +7,8 @@
 
 
 tests = {'California','FA','Erdos02','fe_4elt2','deter3','ukerbe1'}; 
-lmb   = 1e-10; 
+%lmb   = 1e-10; % for arXiV version
+lmb = 0; % for LAA version
 f     = @sqrt; 
 
 ns     = [100,300,100,70,70,20];

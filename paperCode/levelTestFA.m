@@ -13,7 +13,8 @@ A = Problem.A;
 d = size(A,2);
 sa = S.s; 
 
-lmb = 1e-10; 
+%lmb = 1e-10; % For arXiV paper
+lmb = 0; % for LAA
 lambda = lmb*max(sa); 
 
 sb = sqrt(sa.^2 + lambda); 
@@ -91,12 +92,14 @@ for i = 1:100
 end
 ax = gca; 
 ax.FontSize = 14; 
+ax.XScale = 'log'; %% arXiv paper: use linear scale
+ax.XLim = [1,300]; 
 xlabel('Polynomial degree','fontsize',16)
 ylabel('Cumulative budget','fontsize',16)
 print('FAbudget','-dpng')
 
 
-% Fig 5.1, left: Histogram of the number of levels used
+%% Fig 5.1, left: Histogram of the number of levels used
 figure
 h = histogram(LVL,'numBins',20,'FaceColor','k','FaceAlpha',0.1);
 ax = gca; 
@@ -104,9 +107,11 @@ ax.FontSize = 14;
 xlabel('Number of levels','fontsize',16)
 ylabel('Frequency','fontsize',16)
 print('FAfreq','-dpng')
+%%
 
 % Table 5.2: samples for one level in particular
-L = LVLS{1,98}; 
+L = LVLS{1,84}; 
+%L = LVLS{1,98}; for arXiV paper
 disp(L)
 
 % Look at second-largest levels
